@@ -16,6 +16,7 @@ def main():
     # enter the character class
     char_class = input("please enter your character class: ")
 
+    # check the input
     for x in config.class_tuple:
         if x == char_class:
             class_exists = True
@@ -37,6 +38,7 @@ def main():
     # enter the item class
     item_class = input("what type of item do you want generated?: ")
 
+    # check the input
     for x in config.item_tuple:
         if x == item_class:
             item_exists = True
@@ -45,7 +47,7 @@ def main():
         print("GET A BRAIN MORAN")
         return 0
     
-    # Initialize loot logic
+    # initialize loot logic
     biddyloot.loot_init(level, char_class, item_class)
 
 if __name__ == "__main__":
