@@ -1,7 +1,25 @@
 import config
+import math
+import random
 
-def loot_init(level, char_class, item_class):
-    # this is where we will handle the level scaling and character/item conditionals
-    # notice how this definition of a function is invoked at the bottom of the main funtion in main.py
-    print("you have chosen a level " + level + " " + char_class)
-    print("you have chosen to generate a " + item_class)
+# array name: inventory = {0}
+
+
+def godFormula(config_item, ilvl):
+    range_modifier = 3
+    # return abs(int(random.uniform((math.log(ilvl)) - range_modifier, (math.log10(ilvl)*100) + range_modifier)))
+    return int(random.uniform(ilvl + math.sqrt(config_item["stats"]["proficiency"]) - range_modifier, ilvl + math.sqrt(config_item["stats"]["proficiency"]) + range_modifier))
+def loot_init(config_item):
+    ilvl=config_item["item_level"]
+    # range_modifier = 3
+    # god_formula = abs(int(random.uniform((math.log(ilvl)) - range_modifier, (math.log10#(ilvl)*100) + range_modifier)))
+    config_item["stats"]["strength"]=godFormula(config_item, ilvl)
+    config_item["stats"]["intelligence"]=godFormula(config_item, ilvl)
+    config_item["stats"]["dexterity"]=godFormula(config_item, ilvl)
+    config_item["stats"]["vitality"]=godFormula(config_item, ilvl)
+
+    return print(config_item)
+
+
+# def get_item(looted_item):
+  #
